@@ -70,6 +70,7 @@
             this.errorProvider3 = new System.Windows.Forms.ErrorProvider(this.components);
             this.textBoxBMI = new System.Windows.Forms.TextBox();
             this.LabelBMI = new System.Windows.Forms.Label();
+            this.BMINapis = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider3)).BeginInit();
@@ -96,6 +97,7 @@
             this.Weight1.Name = "Weight1";
             this.Weight1.Size = new System.Drawing.Size(100, 20);
             this.Weight1.TabIndex = 3;
+            this.Weight1.TextChanged += new System.EventHandler(this.Weight1_TextChanged);
             // 
             // Plec
             // 
@@ -242,6 +244,7 @@
             this.Sit.Text = "Praca Siedząca";
             this.Sit.UseVisualStyleBackColor = true;
             this.Sit.CheckedChanged += new System.EventHandler(this.Sit_CheckedChanged);
+            this.Sit.Click += new System.EventHandler(this.Sit_Click);
             // 
             // SztukiWalki
             // 
@@ -311,6 +314,7 @@
             this.DodatkowaAktyw.Text = "Dodatkowa aktywność, której nie ma wyżej";
             this.DodatkowaAktyw.UseVisualStyleBackColor = true;
             this.DodatkowaAktyw.CheckedChanged += new System.EventHandler(this.DodatkowaAktyw_CheckedChanged);
+            this.DodatkowaAktyw.Click += new System.EventHandler(this.DodatkowaAktyw_Click);
             // 
             // label7
             // 
@@ -324,7 +328,7 @@
             // Produkty
             // 
             this.Produkty.FormattingEnabled = true;
-            this.Produkty.Location = new System.Drawing.Point(321, 41);
+            this.Produkty.Location = new System.Drawing.Point(321, 37);
             this.Produkty.Name = "Produkty";
             this.Produkty.Size = new System.Drawing.Size(351, 407);
             this.Produkty.TabIndex = 28;
@@ -441,12 +445,22 @@
             this.LabelBMI.TabIndex = 39;
             this.LabelBMI.Text = "Twoje BMI:";
             // 
+            // BMINapis
+            // 
+            this.BMINapis.AutoSize = true;
+            this.BMINapis.Font = new System.Drawing.Font("Modern No. 20", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BMINapis.Location = new System.Drawing.Point(341, 527);
+            this.BMINapis.Name = "BMINapis";
+            this.BMINapis.Size = new System.Drawing.Size(0, 38);
+            this.BMINapis.TabIndex = 40;
+            // 
             // AplikacjaDietetyczna
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
             this.ClientSize = new System.Drawing.Size(709, 635);
+            this.Controls.Add(this.BMINapis);
             this.Controls.Add(this.LabelBMI);
             this.Controls.Add(this.textBoxBMI);
             this.Controls.Add(this.TimeToCele);
@@ -539,6 +553,7 @@
         private System.Windows.Forms.ErrorProvider errorProvider3;
         private System.Windows.Forms.Label LabelBMI;
         private System.Windows.Forms.TextBox textBoxBMI;
+        private System.Windows.Forms.Label BMINapis;
     }
 }
 

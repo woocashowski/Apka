@@ -1,0 +1,16 @@
+Z:\Apka-master\ApkaDietetyczna\bin\Debug\ApkaDietetyczna.exe.config
+Z:\Apka-master\ApkaDietetyczna\bin\Debug\ApkaDietetyczna.exe
+Z:\Apka-master\ApkaDietetyczna\bin\Debug\ApkaDietetyczna.pdb
+Z:\Apka-master\ApkaDietetyczna\bin\Debug\BouncyCastle.Crypto.dll
+Z:\Apka-master\ApkaDietetyczna\bin\Debug\Google.Protobuf.dll
+Z:\Apka-master\ApkaDietetyczna\bin\Debug\MySql.Data.dll
+Z:\Apka-master\ApkaDietetyczna\bin\Debug\Google.Protobuf.xml
+Z:\Apka-master\ApkaDietetyczna\bin\Debug\MySql.Data.xml
+Z:\Apka-master\ApkaDietetyczna\obj\Debug\ApkaDietetyczna.csprojAssemblyReference.cache
+Z:\Apka-master\ApkaDietetyczna\obj\Debug\ApkaDietetyczna.AplikacjaDietetyczna.resources
+Z:\Apka-master\ApkaDietetyczna\obj\Debug\ApkaDietetyczna.Properties.Resources.resources
+Z:\Apka-master\ApkaDietetyczna\obj\Debug\ApkaDietetyczna.csproj.GenerateResource.cache
+Z:\Apka-master\ApkaDietetyczna\obj\Debug\ApkaDietetyczna.csproj.CoreCompileInputs.cache
+Z:\Apka-master\ApkaDietetyczna\obj\Debug\ApkaDietetyczna.csproj.CopyComplete
+Z:\Apka-master\ApkaDietetyczna\obj\Debug\ApkaDietetyczna.exe
+Z:\Apka-master\ApkaDietetyczna\obj\Debug\ApkaDietetyczna.pdb

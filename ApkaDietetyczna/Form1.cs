@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -14,6 +15,9 @@ namespace ApkaDietetyczna
 {
     public partial class AplikacjaDietetyczna : Form
     {
+
+        double [] Mn7 = new double[2];
+        double[] Mn8 = new double[2];
         Osoba Adam = new Osoba(); 
 
     
@@ -32,6 +36,7 @@ namespace ApkaDietetyczna
 
             #region czasy
             InitializeComponent();
+
             Plec.Items.Add("Kobieta");
             Plec.Items.Add("Mężczyzna");
 
@@ -53,6 +58,7 @@ namespace ApkaDietetyczna
             comboBoxPracaStojaca.Items.Add("+72 godziny");
 
 
+            Walking.Items.Add(" ");
             Walking.Items.Add("Poniżej 1h");
             Walking.Items.Add("Około Godziny");
             Walking.Items.Add("1-2 godziny");
@@ -60,18 +66,24 @@ namespace ApkaDietetyczna
             Walking.Items.Add("Ponad 3 godziny");
 
 
+
+            StrengthTraining.Items.Add(" ");
             StrengthTraining.Items.Add("3-4h");
             StrengthTraining.Items.Add("4-5h");
             StrengthTraining.Items.Add("6-7h");
             StrengthTraining.Items.Add("8-9h");
             StrengthTraining.Items.Add("10-12h");
 
+
+            MartialArts.Items.Add(" ");
             MartialArts.Items.Add("1-2h");
             MartialArts.Items.Add("2-3h");
             MartialArts.Items.Add("4-5h");
             MartialArts.Items.Add("6-7h");
             MartialArts.Items.Add("Ponad 7h");
 
+
+            Cycling.Items.Add(" ");
             Cycling.Items.Add("Poniżej 1h");
             Cycling.Items.Add("1-2h");
             Cycling.Items.Add("3-4h");
@@ -79,16 +91,21 @@ namespace ApkaDietetyczna
             Cycling.Items.Add("Ponad 8 godzin");
 
 
+
+            Sylwetka.Items.Add(" ");
             Sylwetka.Items.Add("Umięśniona");
             Sylwetka.Items.Add("Szczupła");
             Sylwetka.Items.Add("Skinny-fat*");
             Sylwetka.Items.Add("Otyła");
 
 
+            Cele.Items.Add(" ");
             Cele.Items.Add("Schudnąć");
             Cele.Items.Add("Utrzymać wagę");
             Cele.Items.Add("Przytyć");
 
+
+            TimeToCele.Items.Add(" ");
             TimeToCele.Items.Add("Miesiąc");
             TimeToCele.Items.Add("Dwa miesiące");
             TimeToCele.Items.Add("Trzy miesiące");
@@ -97,6 +114,15 @@ namespace ApkaDietetyczna
             TimeToCele.Items.Add("Pół Roku");
             TimeToCele.Items.Add("Rok");
             #endregion
+
+
+            comboBoxPracaFizyczna.SelectedIndex = 0;
+            comboBoxPracaStojaca.SelectedIndex = 0;
+            Walking.SelectedIndex = 0;
+            StrengthTraining.SelectedIndex = 0;
+            MartialArts.SelectedIndex = 0;
+            Cycling.SelectedIndex = 0;
+            
 
         }
 
@@ -153,43 +179,60 @@ namespace ApkaDietetyczna
 
 
             //Dodatek[DodatkowaAktyw.TabIndex] nie wiem jak zrobić
-            double Mnoznik = 1.2 + PracaFiz[comboBoxPracaFizyczna.SelectedIndex];
+            double Mnoznik = 1.0 + PracaFiz[comboBoxPracaFizyczna.SelectedIndex];
             double Mn2 = 1.0 + PracaStoj[comboBoxPracaStojaca.SelectedIndex];
             double Mn3 = 1.0 + Spacerki[Walking.SelectedIndex];
             double Mn4 = 1.0 + Sztuki[MartialArts.SelectedIndex];
             double Mn5 = 1.0 + Rower[Cycling.SelectedIndex];
             double Mn6 = 1.0 + Sila[StrengthTraining.SelectedIndex];
-            //zamiast mnożenia mnożików muszę jej dodać
-
-                                   
             
-            double result = ((((((((Adam.waga * 10) + (Adam.wzrost * 6.25) - (5 * Adam.wiek)) * Mnoznik)
-                *Mn2)*Mn3)*Mn4)*Mn5)*Mn6);
-            double BMI = Adam.waga / (Adam.wzrost * Adam.wzrost);
+            
+
+            
+                                               
+            
+            double result = ((((((((((Adam.waga * 10) + (Adam.wzrost * 6.25) - (5 * Adam.wiek)) * Mnoznik)
+                *Mn2)*Mn3)*Mn4)*Mn5)*Mn6)*Mn7[0])*Mn8[1]);
+
+
+            double BMI = Math.Round((double)Adam.waga / (((double)Adam.wzrost * (double)Adam.wzrost)/10000),2);
+
+            
 
             #region BMI
             if (BMI < 18)
             {
-                this.textBoxBMI = "Niedowaga";
+                textBoxBMI.Text = BMI.ToString();
+                BMINapis.Text = "Niedowaga";
+                BMINapis.ForeColor = Color.Blue;
             }
             else if (BMI < 24)
             {
-                this.textBoxBMI = "Waga w normie";
+                textBoxBMI.Text = BMI.ToString();
+                BMINapis.Text = "Waga Prawidłowa";
+                BMINapis.ForeColor = Color.Green;
             }
             else if (BMI < 29)
             {
-                this.textBoxBMI = "Nadwaga";
+                textBoxBMI.Text = BMI.ToString();
+                BMINapis.Text = "Nadwaga";
+                BMINapis.ForeColor = Color.Orange;
             }
             else if (BMI < 39)
             {
-                this.textBoxBMI = "Otyłość";
+                textBoxBMI.Text = BMI.ToString();
+                BMINapis.Text = "Otyłość";
+                BMINapis.ForeColor = Color.Red;
             }
             else if (BMI > 40)
             {
-                this.textBoxBMI = "Poważna Otyłość";
+                textBoxBMI.Text = BMI.ToString();
+                BMINapis.Text = "Poważna Otyłość";
+                BMINapis.ForeColor = Color.Black;
+                BMINapis.Image = Image.FromFile(@"Z:\Apka-master\Plomienie.jpg");
             }
 
-            textBoxBMI.Text = BMI.ToString();
+            
 
 
              #endregion
@@ -290,6 +333,37 @@ namespace ApkaDietetyczna
         }
 
         private void DodatkowaAktyw_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Sit_Click(object sender, EventArgs e)
+        {
+            if (Sit.Checked)
+
+            {
+                Mn7[0] = 1.15;
+            }
+            else
+                {
+                Mn7[0] = 1.0;
+                }
+
+        }
+
+        private void DodatkowaAktyw_Click(object sender, EventArgs e)
+        {
+            if (DodatkowaAktyw.Checked)
+            {
+                Mn8[0] = 1.25;
+            }
+            else
+            {
+                Mn8[0] = 1.0;
+            }
+        }
+
+        private void Weight1_TextChanged(object sender, EventArgs e)
         {
 
         }
