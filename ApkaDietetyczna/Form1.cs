@@ -16,19 +16,18 @@ namespace ApkaDietetyczna
     public partial class AplikacjaDietetyczna : Form
     {
 
-        double [] Mn7 = new double[2];
-        double[] Mn8 = new double[2];
+        
         Osoba Adam = new Osoba(); 
 
     
         double[] PracaFiz = new double [7] { 0.00, 0.05, 0.1, 0.15, 0.20, 0.25, 0.30 };
         double[] PracaStoj = new double[7] { 0.00, 0.05, 0.1, 0.15, 0.20, 0.25, 0.30 };
-        double[] Spacerki = new double[5] { 0.00, 0.05, 0.1, 0.15, 0.20 };
-        double[] Sztuki = new double[5] { 0.00, 0.05, 0.1, 0.15, 0.20 };
-        double[] Rower = new double[5] { 0.00, 0.05, 0.1, 0.15, 0.20 };
-        double[] Sila = new double[5] { 0.00, 0.05, 0.1, 0.15, 0.20 };
-        double[] Dodatek = new double[1] { 0.15 };
-        double[] PracaSiedz = new double[1] { 0.05 };
+        double[] Spacerki = new double[6] { 0.00, 0.05, 0.1, 0.15, 0.20, 0.25 };
+        double[] Sztuki = new double[6] { 0.00, 0.05, 0.1, 0.15, 0.20, 0.25 };
+        double[] Rower = new double[6] { 0.00, 0.05, 0.1, 0.15, 0.20, 0.25 };
+        double[] Sila = new double[6] { 0.00, 0.05, 0.1, 0.15, 0.20, 0.25 };
+        double[] Mn7 = new double[2];
+        double[] Mn8 = new double[2];
 
 
         public AplikacjaDietetyczna()
@@ -115,6 +114,7 @@ namespace ApkaDietetyczna
             TimeToCele.Items.Add("Rok");
             #endregion
 
+            #region przypisanie wartości do 0
 
             comboBoxPracaFizyczna.SelectedIndex = 0;
             comboBoxPracaStojaca.SelectedIndex = 0;
@@ -122,8 +122,7 @@ namespace ApkaDietetyczna
             StrengthTraining.SelectedIndex = 0;
             MartialArts.SelectedIndex = 0;
             Cycling.SelectedIndex = 0;
-            
-
+            #endregion
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -136,6 +135,7 @@ namespace ApkaDietetyczna
             //   MartialArts.Items.Add(Multiplier);
             //   Cycling.Items.Add(Multiplier);
             //   StrengthTraining.Items.Add(Multiplier);
+
             comboBoxPracaFizyczna.Enabled = false;
             comboBoxPracaStojaca.Enabled = false;
             Walking.Enabled = false;
@@ -174,25 +174,25 @@ namespace ApkaDietetyczna
             }
             #endregion
 
-            Adam.waga = Convert.ToInt32(Weight1.Text);
+            
             int Wynik = Convert.ToInt32(Plec.SelectedIndex);
 
 
             //Dodatek[DodatkowaAktyw.TabIndex] nie wiem jak zrobić
-            double Mnoznik = 1.0 + PracaFiz[comboBoxPracaFizyczna.SelectedIndex];
-            double Mn2 = 1.0 + PracaStoj[comboBoxPracaStojaca.SelectedIndex];
-            double Mn3 = 1.0 + Spacerki[Walking.SelectedIndex];
-            double Mn4 = 1.0 + Sztuki[MartialArts.SelectedIndex];
-            double Mn5 = 1.0 + Rower[Cycling.SelectedIndex];
-            double Mn6 = 1.0 + Sila[StrengthTraining.SelectedIndex];
+            double Mnoznik = PracaFiz[comboBoxPracaFizyczna.SelectedIndex];
+            double Mn2 = PracaStoj[comboBoxPracaStojaca.SelectedIndex];
+            double Mn3 = Spacerki[Walking.SelectedIndex];
+            double Mn4 = Sztuki[MartialArts.SelectedIndex];
+            double Mn5 = Rower[Cycling.SelectedIndex];
+            double Mn6 = Sila[StrengthTraining.SelectedIndex];
             
             
 
             
                                                
             
-            double result = ((((((((((Adam.waga * 10) + (Adam.wzrost * 6.25) - (5 * Adam.wiek)) * Mnoznik)
-                *Mn2)*Mn3)*Mn4)*Mn5)*Mn6)*Mn7[0])*Mn8[1]);
+            double result = (((Adam.waga * 10) + (Adam.wzrost * 6.25) - (5 * Adam.wiek)) 
+                * (1.0 + Mnoznik+Mn2+Mn3+Mn4+Mn5+Mn6+Mn7[0]+Mn8[0]));
 
 
             double BMI = Math.Round((double)Adam.waga / (((double)Adam.wzrost * (double)Adam.wzrost)/10000),2);
@@ -216,7 +216,7 @@ namespace ApkaDietetyczna
             {
                 textBoxBMI.Text = BMI.ToString();
                 BMINapis.Text = "Nadwaga";
-                BMINapis.ForeColor = Color.Orange;
+                BMINapis.ForeColor = Color.AntiqueWhite;
             }
             else if (BMI < 39)
             {
@@ -342,12 +342,12 @@ namespace ApkaDietetyczna
             if (Sit.Checked)
 
             {
-                Mn7[0] = 1.15;
+                Mn7[0] = 0.10;
             }
             else
-                {
-                Mn7[0] = 1.0;
-                }
+            {
+                Mn7[0] = 0.0;
+            }
 
         }
 
@@ -355,11 +355,11 @@ namespace ApkaDietetyczna
         {
             if (DodatkowaAktyw.Checked)
             {
-                Mn8[0] = 1.25;
+                Mn8[0] = 0.25;
             }
             else
             {
-                Mn8[0] = 1.0;
+                Mn8[0] = 0.0;
             }
         }
 

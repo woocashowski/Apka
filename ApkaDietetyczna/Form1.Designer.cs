@@ -330,7 +330,7 @@
             this.Produkty.FormattingEnabled = true;
             this.Produkty.Location = new System.Drawing.Point(321, 37);
             this.Produkty.Name = "Produkty";
-            this.Produkty.Size = new System.Drawing.Size(351, 407);
+            this.Produkty.Size = new System.Drawing.Size(360, 420);
             this.Produkty.TabIndex = 28;
             this.Produkty.SelectedIndexChanged += new System.EventHandler(this.Produkty_SelectedIndexChanged);
             // 
@@ -500,6 +500,7 @@
             this.Controls.Add(this.Growth1);
             this.Controls.Add(this.Age1);
             this.Name = "AplikacjaDietetyczna";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Aplikacja Dietetyczna";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
