@@ -21,11 +21,11 @@ namespace ApkaDietetyczna
 
     
         double[] PracaFiz = new double [7] { 0.00, 0.05, 0.1, 0.15, 0.20, 0.25, 0.30 };
-        double[] PracaStoj = new double[7] { 0.00, 0.05, 0.1, 0.15, 0.20, 0.25, 0.30 };
-        double[] Spacerki = new double[6] { 0.00, 0.05, 0.1, 0.15, 0.20, 0.25 };
+        double[] PracaStoj = new double[7] { 0.00, 0.03, 0.06, 0.09, 0.12, 0.15, 0.18 };
+        double[] Spacerki = new double[6] { 0.00, 0.03, 0.06, 0.09, 0.12, 0.15 };
         double[] Sztuki = new double[6] { 0.00, 0.05, 0.1, 0.15, 0.20, 0.25 };
         double[] Rower = new double[6] { 0.00, 0.05, 0.1, 0.15, 0.20, 0.25 };
-        double[] Sila = new double[6] { 0.00, 0.05, 0.1, 0.15, 0.20, 0.25 };
+        double[] Sila = new double[6] { 0.00, 0.04, 0.08, 0.12, 0.16, 0.20 };
         double[] Mn7 = new double[2];
         double[] Mn8 = new double[2];
 

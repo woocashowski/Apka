@@ -330,7 +330,7 @@
             this.Produkty.FormattingEnabled = true;
             this.Produkty.Location = new System.Drawing.Point(321, 37);
             this.Produkty.Name = "Produkty";
-            this.Produkty.Size = new System.Drawing.Size(360, 420);
+            this.Produkty.Size = new System.Drawing.Size(358, 433);
             this.Produkty.TabIndex = 28;
             this.Produkty.SelectedIndexChanged += new System.EventHandler(this.Produkty_SelectedIndexChanged);
             // 
